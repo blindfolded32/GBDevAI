@@ -7,6 +7,7 @@ public class DataPlayer
     private int _countMoney;
     private int _countHealth;
     private int _countPower;
+    private int _crimeLevel;
 
     private List<IEnemy> _enemies = new List<IEnemy>();
 
@@ -55,6 +56,18 @@ public class DataPlayer
             }
         }
     }
+    public int CrimeLevel
+    {
+        get => _crimeLevel;
+        set
+        {
+            if (_crimeLevel != value)
+            {               
+                _crimeLevel = value;
+                Notifier(DataType.CrimeLevel);
+            }
+        }
+    }
 
     public void Attach(IEnemy enemy)
     {
@@ -79,17 +92,21 @@ public class Money : DataPlayer
     {
     }
 }
-
 public class Health : DataPlayer
 {
     public Health(string titleData) : base(titleData)
     {
     }
 }
-
 public class Power : DataPlayer
 {
     public Power(string titleData) : base(titleData)
+    {
+    }
+}
+public class CrimeLevel : DataPlayer
+{
+    public CrimeLevel(string titleData) : base(titleData)
     {
     }
 }
